@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: rdhingra86/hello-world
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: "nginx"  # Or "alb", "gce", etc. depending on your ingress controller
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host: springboot.local     # Replace with your domain or use local DNS with /etc/hosts
+  tls: false
+  tlsSecret: ""
+
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+
+

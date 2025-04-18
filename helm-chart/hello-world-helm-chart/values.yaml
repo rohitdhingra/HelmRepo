@@ -26,5 +26,7 @@ resources:
   requests:
     memory: "256Mi"
     cpu: "250m"
-
+env:
+  - name: custom_name
+    value: Helm Custom_name
 
